@@ -372,24 +372,6 @@ textarea{min-height:84px;resize:vertical}
         <div class="script">Registry</div>
       </a>
 
-      <a class="paper card full giftcard-tile tilt-l" id="giftCardTile" target="_blank" rel="noopener">
-        <div class="cutout">
-          <span class="scissors" aria-hidden="true">✂</span>
-          <div class="gcard">
-            <div class="gc-band"></div>
-            <div class="gc-bow"></div>
-            <svg class="gc-bear" viewBox="0 0 200 230" aria-hidden="true"><use href="#bear"/></svg>
-            <div class="gc-label">Gift Card</div>
-            <div class="gc-amt">any amount</div>
-          </div>
-        </div>
-        <div class="gc-copy">
-          <h3>Prefer a gift card?</h3>
-          <p>Choose any amount on Brianna's registry. Look for <b>Cash &amp; gift cards</b>.</p>
-          <span class="btn">Get a gift card</span>
-        </div>
-      </a>
-
       <button class="paper card full tile blue tilt-r" data-go="guess">
         <svg class="icon"><use href="#scale"/></svg>
         <div class="small">Play</div>
@@ -553,9 +535,7 @@ const CONFIG = {
   SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxvOMOJ0muNgLXMGls9UYXUlPIcIk2cGDHLpsA5RElSLomBImXeN7lggPKDkxkCKbw5/exec',
   ADDRESS_LINES: ['The Judin Home', '7656 SW 86th Way', 'Gainesville, FL 32608'],
   MAP_QUERY: '7656 SW 86th Way, Gainesville, FL 32608',
-  REGISTRY_URL: 'https://my.babylist.com/brianna-judin',
-  GIFT_CARD_URL: 'https://my.babylist.com/brianna-judin', // gift card lives in the registry's "Cash & gift cards" section (no direct link)
-  EVENT_START: '2027-01-23T11:30:00-05:00',
+  REGISTRY_URL: 'https://my.babylist.com/brianna-judin',  EVENT_START: '2027-01-23T11:30:00-05:00',
   EVENT_END:   '2027-01-23T14:30:00-05:00'
 };
 
@@ -589,8 +569,6 @@ if (CONFIG.MAP_QUERY) mapLink.href = 'https://maps.google.com/?q=' + encodeURICo
 else mapLink.classList.add('hidden');
 const reg = document.getElementById('registryTile');
 if (CONFIG.REGISTRY_URL) reg.href = CONFIG.REGISTRY_URL; else reg.addEventListener('click', e => { e.preventDefault(); alert('Registry link coming soon!'); });
-document.getElementById('giftCardTile').href = CONFIG.GIFT_CARD_URL || CONFIG.REGISTRY_URL;
-
 /* ---------- prediction selects ---------- */
 const lb = document.querySelector('[name=weightLb]'), oz = document.querySelector('[name=weightOz]'), len = document.getElementById('g_len');
 for (let i = 4; i <= 11; i++) lb.add(new Option(i + ' lbs', i));
