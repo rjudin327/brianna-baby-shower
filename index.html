@@ -168,6 +168,20 @@ textarea{min-height:84px;resize:vertical}
 .thanks svg{width:120px;margin:10px auto;display:block}
 .hidden{display:none !important}
 .demo{position:fixed;left:8px;bottom:8px;z-index:50;font-family:var(--sans);font-size:11px;background:#fff3cd;color:#6b4a00;padding:5px 9px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+/* ---------- gift card cutout ---------- */
+.giftcard-tile{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.cutout{position:relative;flex:none;padding:11px;border:2px dashed var(--brown);border-radius:18px;margin-top:6px}
+.scissors{position:absolute;top:-13px;left:18px;font-size:20px;color:var(--cocoa-soft);background:var(--paper);padding:0 4px;line-height:1}
+.gcard{position:relative;width:220px;height:132px;border-radius:12px;overflow:hidden;transform:rotate(-3deg);
+  box-shadow:0 4px 10px rgba(107,74,51,.25);background-color:#f4f9fe;
+  background-image:linear-gradient(90deg, rgba(169,203,232,.6) 50%, transparent 50%),linear-gradient(rgba(169,203,232,.6) 50%, transparent 50%);background-size:14px 14px}
+.gc-band{position:absolute;top:0;bottom:0;left:34px;width:16px;background:var(--brown);box-shadow:inset 0 0 0 1px rgba(79,51,34,.25)}
+.gc-bow{position:absolute;top:10px;left:42px;width:16px;height:16px;transform:translateX(-50%);background:#a97b4c;border-radius:50%;box-shadow:-11px -3px 0 -2px #c49a6c, 11px -3px 0 -2px #c49a6c}
+.gc-bear{position:absolute;right:8px;bottom:6px;width:54px}
+.gc-label{position:absolute;left:62px;top:26px;white-space:nowrap;font-family:var(--script);font-size:2.1rem;color:var(--cocoa);background:rgba(253,248,241,.92);padding:2px 10px 6px;border-radius:6px;line-height:1}
+.gc-amt{position:absolute;left:64px;top:82px;white-space:nowrap;font-family:var(--sans);font-weight:700;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-ink);background:rgba(253,248,241,.92);padding:3px 7px;border-radius:4px}
+.gc-copy h3{margin-bottom:4px}
+.gc-copy p{font-size:1.05rem;margin-bottom:12px}
 @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
 @media (min-width:520px){.wrap{padding-top:40px}}
 </style>
@@ -267,6 +281,14 @@ textarea{min-height:84px;resize:vertical}
       <circle cx="13" cy="18" r="2.2" fill="#fff"/><circle cx="47" cy="18" r="2.2" fill="#fff"/>
       <path d="M22 32 q8 6 16 0" stroke="#e6cfb2" stroke-width="2" fill="none"/>
     </symbol>
+    <symbol id="mimosa" viewBox="0 0 60 60">
+      <path d="M20 8 h20 l-2 20 q-1 8 -8 9 q-7 -1 -8 -9 z" fill="#fff" stroke="#c49a6c" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M21.2 18 h17.6 l-.8 10 q-1 6.5 -8 7.5 q-7 -1 -8 -7.5 z" fill="#f6b45a"/>
+      <circle cx="26" cy="24" r="1.2" fill="#fff" opacity=".8"/><circle cx="32" cy="28" r="1" fill="#fff" opacity=".8"/><circle cx="29" cy="21" r=".9" fill="#fff" opacity=".8"/>
+      <path d="M30 37 v13 M22 52 h16" stroke="#c49a6c" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M38 8 a7 7 0 1 1 6 9" fill="#f9a03f" stroke="#c97a2a" stroke-width="1.6"/>
+      <path d="M42 10 l3 4" stroke="#fff" stroke-width="1.2" opacity=".7"/>
+    </symbol>
     <symbol id="scale" viewBox="0 0 60 60">
       <rect x="10" y="40" width="40" height="12" rx="4" fill="#c49a6c"/>
       <path d="M14 40 q16 -34 32 0 z" fill="#e6cfb2" stroke="#c49a6c" stroke-width="2"/>
@@ -350,12 +372,43 @@ textarea{min-height:84px;resize:vertical}
         <div class="script">Registry</div>
       </a>
 
+      <a class="paper card full giftcard-tile tilt-l" id="giftCardTile" target="_blank" rel="noopener">
+        <div class="cutout">
+          <span class="scissors" aria-hidden="true">✂</span>
+          <div class="gcard">
+            <div class="gc-band"></div>
+            <div class="gc-bow"></div>
+            <svg class="gc-bear" viewBox="0 0 200 230" aria-hidden="true"><use href="#bear"/></svg>
+            <div class="gc-label">Gift Card</div>
+            <div class="gc-amt">any amount</div>
+          </div>
+        </div>
+        <div class="gc-copy">
+          <h3>Prefer a gift card?</h3>
+          <p>Choose any amount on Brianna's registry. Look for <b>Cash &amp; gift cards</b>.</p>
+          <span class="btn">Get a gift card</span>
+        </div>
+      </a>
+
+      <button class="paper card full tile blue tilt-r" data-go="guess">
+        <svg class="icon"><use href="#scale"/></svg>
+        <div class="small">Play</div>
+        <div class="script" style="font-size:clamp(2rem,9vw,2.6rem);overflow-wrap:normal">Baby Predictions</div>
+        <div class="note" style="margin-top:4px">Guess baby's birthday, weight, length and more!</div>
+      </button>
+
       <div class="paper card full tilt-l">
         <span class="tape"></span>
         <svg class="icon"><use href="#diaper"/></svg>
         <h3>Diaper Raffle</h3>
         <p>Bring a pack of diapers or wipes, any size, for a chance to win a special prize!</p>
         <p class="note">Every pack is one entry.</p>
+      </div>
+
+      <div class="paper card full kraft tilt-r">
+        <svg class="icon"><use href="#mimosa"/></svg>
+        <h3>More time for mimosas &amp; mingling!</h3>
+        <p>We'll be opening gifts after the shower.</p>
       </div>
 
       <button class="paper card full tile rsvp-tile" data-go="rsvp" style="margin-top:14px">
@@ -417,6 +470,72 @@ textarea{min-height:84px;resize:vertical}
         <svg viewBox="0 0 200 230" aria-hidden="true"><use href="#bear"/></svg>
         <div class="script" id="rsvpThanksTitle">Thank you!</div>
         <p id="rsvpThanksMsg"></p>
+        <button class="btn brown" data-go="guess" style="margin-top:16px">Play Baby Predictions</button>
+      </div>
+      <button class="back" data-go="invite">Return to invitation</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4. PREDICTIONS ===================== -->
+<section id="guess" class="screen" aria-label="Baby predictions">
+  <div class="wrap">
+    <div class="paper form-card">
+      <span class="tape"></span>
+      <form id="guessForm" novalidate>
+        <div class="form-head">
+          <div class="script">Baby Predictions</div>
+          <p>Baby is due March 29th. Make your guesses! The closest guesses win bragging rights.</p>
+        </div>
+        <div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+
+        <label class="q" for="g_name">Your name</label>
+        <input type="text" id="g_name" name="name" autocomplete="name" required maxlength="80">
+
+        <div class="row">
+          <div><label class="q" for="g_date">Birthday</label><input type="date" id="g_date" name="birthDate" min="2027-02-01" max="2027-05-31"></div>
+          <div><label class="q" for="g_time">Time of birth</label><input type="time" id="g_time" name="birthTime"></div>
+        </div>
+
+        <label class="q">Weight</label>
+        <div class="row">
+          <select name="weightLb" aria-label="Pounds"><option value="">lbs</option></select>
+          <select name="weightOz" aria-label="Ounces"><option value="">oz</option></select>
+        </div>
+
+        <label class="q" for="g_len">Length (inches)</label>
+        <select id="g_len" name="length"><option value="">Choose</option></select>
+
+        <label class="q">Hair</label>
+        <div class="choice three">
+          <input type="radio" id="g_h1" name="hair" value="Bald"><label for="g_h1">Bald</label>
+          <input type="radio" id="g_h2" name="hair" value="A little fuzz"><label for="g_h2">A little</label>
+          <input type="radio" id="g_h3" name="hair" value="A full head"><label for="g_h3">A full head</label>
+        </div>
+
+        <label class="q">Eye color</label>
+        <div class="choice three">
+          <input type="radio" id="g_e1" name="eyes" value="Brown"><label for="g_e1">Brown</label>
+          <input type="radio" id="g_e2" name="eyes" value="Blue"><label for="g_e2">Blue</label>
+          <input type="radio" id="g_e3" name="eyes" value="Green / Hazel"><label for="g_e3">Green</label>
+        </div>
+
+        <label class="q">Baby will look more like</label>
+        <div class="choice two">
+          <input type="radio" id="g_l1" name="looksLike" value="Mom"><label for="g_l1">Mom</label>
+          <input type="radio" id="g_l2" name="looksLike" value="Dad"><label for="g_l2">Dad</label>
+        </div>
+
+        <label class="q" for="g_wish">Wishes or advice for the parents <span style="font-weight:400">(optional)</span></label>
+        <textarea id="g_wish" name="wish" maxlength="600"></textarea>
+
+        <button class="submit" type="submit">Submit my guesses</button>
+        <div class="err" id="guessErr" role="alert"></div>
+      </form>
+      <div class="thanks hidden" id="guessThanks">
+        <svg viewBox="0 0 200 230" aria-hidden="true"><use href="#bear"/></svg>
+        <div class="script">Guesses saved!</div>
+        <p>We'll find out who was closest after baby arrives.</p>
       </div>
       <button class="back" data-go="invite">Return to invitation</button>
     </div>
@@ -435,12 +554,13 @@ const CONFIG = {
   ADDRESS_LINES: ['The Judin Home', '7656 SW 86th Way', 'Gainesville, FL 32608'],
   MAP_QUERY: '7656 SW 86th Way, Gainesville, FL 32608',
   REGISTRY_URL: 'https://my.babylist.com/brianna-judin',
+  GIFT_CARD_URL: 'https://my.babylist.com/brianna-judin', // gift card lives in the registry's "Cash & gift cards" section (no direct link)
   EVENT_START: '2027-01-23T11:30:00-05:00',
   EVENT_END:   '2027-01-23T14:30:00-05:00'
 };
 
 /* ---------- screens ---------- */
-const screens = ['landing','invite','rsvp'];
+const screens = ['landing','invite','rsvp','guess'];
 function go(id, push = true){
   screens.forEach(s => document.getElementById(s).classList.toggle('on', s === id));
   window.scrollTo(0,0);
@@ -460,7 +580,7 @@ function openEnv(){
 env.addEventListener('click', openEnv);
 env.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnv(); } });
 document.getElementById('tapBtn').addEventListener('click', openEnv);
-if (['invite','rsvp'].includes(location.hash.slice(1))) go(location.hash.slice(1), false);
+if (['invite','rsvp','guess'].includes(location.hash.slice(1))) go(location.hash.slice(1), false);
 
 /* ---------- details ---------- */
 document.getElementById('addr').innerHTML = CONFIG.ADDRESS_LINES.map(l => l.replace(/[<>&]/g,'')).join('<br>');
@@ -469,6 +589,13 @@ if (CONFIG.MAP_QUERY) mapLink.href = 'https://maps.google.com/?q=' + encodeURICo
 else mapLink.classList.add('hidden');
 const reg = document.getElementById('registryTile');
 if (CONFIG.REGISTRY_URL) reg.href = CONFIG.REGISTRY_URL; else reg.addEventListener('click', e => { e.preventDefault(); alert('Registry link coming soon!'); });
+document.getElementById('giftCardTile').href = CONFIG.GIFT_CARD_URL || CONFIG.REGISTRY_URL;
+
+/* ---------- prediction selects ---------- */
+const lb = document.querySelector('[name=weightLb]'), oz = document.querySelector('[name=weightOz]'), len = document.getElementById('g_len');
+for (let i = 4; i <= 11; i++) lb.add(new Option(i + ' lbs', i));
+for (let i = 0; i <= 15; i++) oz.add(new Option(i + ' oz', i));
+for (let i = 16; i <= 24; i += .5) len.add(new Option(i + '"', i));
 
 /* ---------- calendar ---------- */
 const start = new Date(CONFIG.EVENT_START), end = new Date(CONFIG.EVENT_END);
@@ -526,11 +653,31 @@ rsvpForm.addEventListener('submit', async e => {
     document.getElementById('rsvpThanksTitle').textContent = d.attending === 'Yes' ? 'See you there!' : "We'll miss you!";
     document.getElementById('rsvpThanksMsg').textContent = d.attending === 'Yes'
       ? "Your RSVP is in. Don't forget a pack of diapers or wipes for the raffle!"
-      : 'Thank you for letting us know. Brianna will miss you!';
+      : 'Thank you for letting us know. You can still play Baby Predictions!';
   } catch (x) {
     err.textContent = 'That didn\'t go through. Please try again in a moment.';
   }
   btn.disabled = false; btn.textContent = 'Send RSVP';
+});
+
+const guessForm = document.getElementById('guessForm');
+guessForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  const d = data(guessForm), err = document.getElementById('guessErr');
+  if (d.website) return;
+  if (!d.name) { err.textContent = 'Please add your name.'; return; }
+  if (!d.birthDate && !d.weightLb && !d.length) { err.textContent = 'Make at least one guess!'; return; }
+  err.textContent = '';
+  const btn = guessForm.querySelector('.submit'); btn.disabled = true; btn.textContent = 'Saving...';
+  try {
+    await send({ type:'guess', ...d });
+    store('guess', '1');
+    guessForm.classList.add('hidden');
+    document.getElementById('guessThanks').classList.remove('hidden');
+  } catch (x) {
+    err.textContent = 'That didn\'t go through. Please try again in a moment.';
+  }
+  btn.disabled = false; btn.textContent = 'Submit my guesses';
 });
 </script>
 </body>
