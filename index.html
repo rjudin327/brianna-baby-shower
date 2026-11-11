@@ -106,7 +106,7 @@ a{color:inherit}
 .honor .caps{font-size:.68rem}
 .honor h1{font-family:var(--script);font-weight:400;font-size:3.9rem;color:var(--blue-ink);line-height:1;margin:8px 0 2px}
 .honor .sub{font-size:1.15rem;font-style:italic}
-.honor .bear{width:110px;margin:4px auto 0;display:block}
+.honor .bear{width:140px;margin:4px auto 0;display:block}
 .when .day{font-weight:700;letter-spacing:.2em;font-size:.78rem}
 .when .date{font-family:var(--script);font-size:clamp(1.7rem,8vw,2.4rem);color:var(--blue-ink);margin:6px 0 2px;line-height:1.1}
 .when .time{font-weight:700;letter-spacing:.14em;font-size:.95rem}
@@ -177,33 +177,73 @@ textarea{min-height:84px;resize:vertical}
 <!-- ===== reusable art ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
+    <!-- vintage storybook teddy: inked outlines, hand-drawn wobble, mohair texture, stitched details -->
+    <filter id="inkwobble" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="3"/>
+    </filter>
+    <pattern id="mohair" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(18)">
+      <path d="M1 2 l2 3 M5 1 l1.5 3.5 M3 6 l2 2.5 M7 5 l1 3" stroke="#8a5f38" stroke-width=".9" stroke-linecap="round" opacity=".45"/>
+    </pattern>
     <symbol id="bear" viewBox="0 0 200 230">
-      <!-- ears -->
-      <circle cx="52" cy="42" r="24" fill="#c49a6c"/><circle cx="52" cy="42" r="13" fill="#ead2b3"/>
-      <circle cx="148" cy="42" r="24" fill="#c49a6c"/><circle cx="148" cy="42" r="13" fill="#ead2b3"/>
-      <!-- legs -->
-      <ellipse cx="62" cy="200" rx="30" ry="24" fill="#b88c5e"/><ellipse cx="62" cy="204" rx="16" ry="13" fill="#ead2b3"/>
-      <ellipse cx="138" cy="200" rx="30" ry="24" fill="#b88c5e"/><ellipse cx="138" cy="204" rx="16" ry="13" fill="#ead2b3"/>
-      <!-- body -->
-      <ellipse cx="100" cy="160" rx="54" ry="52" fill="#c49a6c"/>
-      <ellipse cx="100" cy="168" rx="32" ry="30" fill="#ead2b3"/>
-      <!-- arms -->
-      <ellipse cx="46" cy="148" rx="17" ry="28" transform="rotate(25 46 148)" fill="#b88c5e"/>
-      <ellipse cx="154" cy="148" rx="17" ry="28" transform="rotate(-25 154 148)" fill="#b88c5e"/>
-      <!-- head -->
-      <circle cx="100" cy="78" r="56" fill="#c49a6c"/>
-      <ellipse cx="100" cy="96" rx="26" ry="20" fill="#ead2b3"/>
-      <ellipse cx="100" cy="88" rx="9" ry="6.5" fill="#5a3b26"/>
-      <path d="M100 95 v6 M100 101 q-7 7 -13 2 M100 101 q7 7 13 2" stroke="#5a3b26" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-      <circle cx="78" cy="70" r="5.5" fill="#3d2718"/><circle cx="122" cy="70" r="5.5" fill="#3d2718"/>
-      <circle cx="80" cy="68" r="1.6" fill="#fff"/><circle cx="124" cy="68" r="1.6" fill="#fff"/>
-      <ellipse cx="68" cy="88" rx="8" ry="5" fill="#e8a9a0" opacity=".55"/><ellipse cx="132" cy="88" rx="8" ry="5" fill="#e8a9a0" opacity=".55"/>
-      <!-- gingham bow -->
-      <g transform="translate(100 124)">
-        <path d="M0 0 L-26 -13 Q-31 0 -26 13 Z" fill="#a9cbe8"/><path d="M0 0 L26 -13 Q31 0 26 13 Z" fill="#a9cbe8"/>
-        <path d="M-24 -9 L-24 9 M-16 -6 L-16 6 M-8 -3 L-8 3 M24 -9 L24 9 M16 -6 L16 6 M8 -3 L8 3" stroke="#6f9fca" stroke-width="2.2" opacity=".75"/>
-        <path d="M-27 -4 L-4 -1 M-27 4 L-4 1 M27 -4 L4 -1 M27 4 L4 1" stroke="#6f9fca" stroke-width="2" opacity=".55"/>
-        <circle r="6.5" fill="#6f9fca"/>
+      <g filter="url(#inkwobble)" stroke="#4f3322" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+        <!-- ears -->
+        <g transform="rotate(-6 100 80)">
+          <circle cx="50" cy="38" r="23" fill="#c99a66"/><circle cx="50" cy="38" r="23" fill="url(#mohair)" stroke="none"/>
+          <path d="M40 44 a11 11 0 0 1 16 -15" fill="#ecd6b0" stroke-width="2"/>
+          <circle cx="150" cy="38" r="23" fill="#c99a66"/><circle cx="150" cy="38" r="23" fill="url(#mohair)" stroke="none"/>
+          <path d="M160 44 a11 11 0 0 0 -16 -15" fill="#ecd6b0" stroke-width="2"/>
+        </g>
+        <!-- legs, sitting -->
+        <ellipse cx="56" cy="198" rx="31" ry="25" fill="#bf8e5a"/><ellipse cx="56" cy="198" rx="31" ry="25" fill="url(#mohair)" stroke="none"/>
+        <ellipse cx="144" cy="198" rx="31" ry="25" fill="#bf8e5a"/><ellipse cx="144" cy="198" rx="31" ry="25" fill="url(#mohair)" stroke="none"/>
+        <ellipse cx="50" cy="203" rx="16" ry="14" fill="#ecd6b0" stroke-width="2"/>
+        <ellipse cx="50" cy="203" rx="11" ry="9.5" fill="none" stroke-width="1.2" stroke-dasharray="2.5 2.5"/>
+        <ellipse cx="150" cy="203" rx="16" ry="14" fill="#ecd6b0" stroke-width="2"/>
+        <ellipse cx="150" cy="203" rx="11" ry="9.5" fill="none" stroke-width="1.2" stroke-dasharray="2.5 2.5"/>
+        <!-- body -->
+        <path d="M100 106 C138 106 156 136 154 168 C152 198 128 212 100 212 C72 212 48 198 46 168 C44 136 62 106 100 106 Z" fill="#c99a66"/>
+        <path d="M100 106 C138 106 156 136 154 168 C152 198 128 212 100 212 C72 212 48 198 46 168 C44 136 62 106 100 106 Z" fill="url(#mohair)" stroke="none"/>
+        <path d="M100 132 V204" fill="none" stroke-width="1.2" stroke-dasharray="3 3" opacity=".7"/>
+        <!-- gingham patch on tummy -->
+        <g transform="rotate(-8 124 176)">
+          <rect x="112" y="164" width="24" height="22" rx="2" fill="#dbe9f6" stroke-width="1.6"/>
+          <path d="M118 164 v22 M124 164 v22 M130 164 v22 M112 170 h24 M112 176 h24 M112 181 h24" stroke="#8fb5da" stroke-width="2.4" opacity=".8"/>
+          <rect x="114.5" y="166.5" width="19" height="17" rx="1" fill="none" stroke-width="1" stroke-dasharray="2 2"/>
+        </g>
+        <!-- arms -->
+        <g transform="rotate(28 44 150)">
+          <ellipse cx="44" cy="150" rx="16" ry="30" fill="#bf8e5a"/><ellipse cx="44" cy="150" rx="16" ry="30" fill="url(#mohair)" stroke="none"/>
+          <ellipse cx="44" cy="168" rx="9" ry="9" fill="#ecd6b0" stroke-width="1.8"/>
+        </g>
+        <g transform="rotate(-28 156 150)">
+          <ellipse cx="156" cy="150" rx="16" ry="30" fill="#bf8e5a"/><ellipse cx="156" cy="150" rx="16" ry="30" fill="url(#mohair)" stroke="none"/>
+          <ellipse cx="156" cy="168" rx="9" ry="9" fill="#ecd6b0" stroke-width="1.8"/>
+        </g>
+        <!-- head -->
+        <g transform="rotate(-6 100 80)">
+          <path d="M100 26 C134 26 156 48 156 80 C156 112 132 130 100 130 C68 130 44 112 44 80 C44 48 66 26 100 26 Z" fill="#c99a66"/>
+          <path d="M100 26 C134 26 156 48 156 80 C156 112 132 130 100 130 C68 130 44 112 44 80 C44 48 66 26 100 26 Z" fill="url(#mohair)" stroke="none"/>
+          <ellipse cx="100" cy="99" rx="25" ry="19" fill="#e6c79c" stroke-width="2.2"/>
+          <!-- stitched nose -->
+          <path d="M89 88 Q100 84 111 88 Q107 98 100 100 Q93 98 89 88 Z" fill="#3b2416" stroke-width="1.8"/>
+          <path d="M92 89 L98 97 M96 88 L100 98 M100 88 L101 98 M104 88 L102 97 M108 89 L103 96" stroke="#6b4a33" stroke-width=".9"/>
+          <!-- thread mouth -->
+          <path d="M100 100 V107 M100 107 Q92 114 86 108 M100 107 Q108 114 114 108" fill="none" stroke="#3b2416" stroke-width="2"/>
+          <!-- shoe-button eyes -->
+          <circle cx="79" cy="74" r="5.6" fill="#1f140d" stroke-width="1.4"/><circle cx="121" cy="74" r="5.6" fill="#1f140d" stroke-width="1.4"/>
+          <circle cx="80.8" cy="72" r="1.7" fill="#fff" stroke="none"/><circle cx="122.8" cy="72" r="1.7" fill="#fff" stroke="none"/>
+          <path d="M70 64 q8 -5 16 -1 M114 63 q8 -4 16 1" fill="none" stroke-width="1.6" opacity=".55"/>
+          <ellipse cx="67" cy="94" rx="8" ry="5" fill="#d98e7e" opacity=".35" stroke="none"/><ellipse cx="133" cy="94" rx="8" ry="5" fill="#d98e7e" opacity=".35" stroke="none"/>
+        </g>
+        <!-- gingham bow -->
+        <g transform="translate(100 128) rotate(-4)">
+          <path d="M0 0 L-27 -14 Q-33 0 -27 14 Z" fill="#a9cbe8" stroke-width="2"/><path d="M0 0 L27 -14 Q33 0 27 14 Z" fill="#a9cbe8" stroke-width="2"/>
+          <path d="M-22 -10 L-22 10 M-14 -6 L-14 6 M22 -10 L22 10 M14 -6 L14 6" stroke="#6f9fca" stroke-width="2.4" opacity=".8"/>
+          <path d="M-29 -4 L-6 -1 M-29 4 L-6 1 M29 -4 L6 -1 M29 4 L6 1" stroke="#6f9fca" stroke-width="2.2" opacity=".6"/>
+          <path d="M-5 2 L-12 22 M5 2 L12 22" fill="none" stroke="#6f9fca" stroke-width="5"/>
+          <ellipse rx="7" ry="7.5" fill="#6f9fca" stroke-width="2"/>
+        </g>
       </g>
     </symbol>
     <symbol id="balloon" viewBox="0 0 60 130">
@@ -243,7 +283,7 @@ textarea{min-height:84px;resize:vertical}
     <div class="hero-title">
       <div class="caps">Oh baby!</div>
       <div class="script">We can bearly wait</div>
-      <div class="caps">a little one is on the way</div>
+      <div class="caps">to celebrate a sweet new arrival</div>
     </div>
 
     <div class="env-zone">
@@ -274,7 +314,7 @@ textarea{min-height:84px;resize:vertical}
         <span class="tape"></span>
         <div class="caps">Please join us for a baby shower honoring</div>
         <h1>Brianna Judin</h1>
-        <div class="sub">a little bear is on the way</div>
+        <div class="sub">as we celebrate her sweet new arrival</div>
         <svg class="bear" viewBox="0 0 200 230" aria-hidden="true"><use href="#bear"/></svg>
       </div>
 
@@ -304,24 +344,18 @@ textarea{min-height:84px;resize:vertical}
         </div>
       </div>
 
-      <a class="paper card tile tilt-r" id="registryTile" target="_blank" rel="noopener" style="text-decoration:none">
+      <a class="paper card full tile kraft tilt-r" id="registryTile" target="_blank" rel="noopener" style="text-decoration:none">
         <svg class="icon"><use href="#gift"/></svg>
         <div class="small">Click for the</div>
         <div class="script">Registry</div>
       </a>
 
-      <button class="paper card tile kraft tilt-l" data-go="guess">
-        <svg class="icon"><use href="#scale"/></svg>
-        <div class="small">Play</div>
-        <div class="script" style="font-size:clamp(1.6rem,7.4vw,2.2rem);overflow-wrap:normal">Baby Predictions</div>
-      </button>
-
-      <div class="paper card full tilt-r">
+      <div class="paper card full tilt-l">
         <span class="tape"></span>
         <svg class="icon"><use href="#diaper"/></svg>
         <h3>Diaper Raffle</h3>
-        <p>Bring a pack of diapers, any size, for a chance to win a special prize!</p>
-        <p class="note">Every pack you bring is one entry in the drawing.</p>
+        <p>Bring a pack of diapers or wipes, any size, for a chance to win a special prize!</p>
+        <p class="note">Every pack is one entry.</p>
       </div>
 
       <button class="paper card full tile rsvp-tile" data-go="rsvp" style="margin-top:14px">
@@ -383,72 +417,6 @@ textarea{min-height:84px;resize:vertical}
         <svg viewBox="0 0 200 230" aria-hidden="true"><use href="#bear"/></svg>
         <div class="script" id="rsvpThanksTitle">Thank you!</div>
         <p id="rsvpThanksMsg"></p>
-        <button class="btn brown" data-go="guess" style="margin-top:16px">Play Baby Predictions</button>
-      </div>
-      <button class="back" data-go="invite">Return to invitation</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== 4. PREDICTIONS ===================== -->
-<section id="guess" class="screen" aria-label="Baby predictions">
-  <div class="wrap">
-    <div class="paper form-card">
-      <span class="tape"></span>
-      <form id="guessForm" novalidate>
-        <div class="form-head">
-          <div class="script">Baby Predictions</div>
-          <p>Make your guesses! The closest guesses win bragging rights.</p>
-        </div>
-        <div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
-
-        <label class="q" for="g_name">Your name</label>
-        <input type="text" id="g_name" name="name" autocomplete="name" required maxlength="80">
-
-        <div class="row">
-          <div><label class="q" for="g_date">Birthday</label><input type="date" id="g_date" name="birthDate"></div>
-          <div><label class="q" for="g_time">Time of birth</label><input type="time" id="g_time" name="birthTime"></div>
-        </div>
-
-        <label class="q">Weight</label>
-        <div class="row">
-          <select name="weightLb" aria-label="Pounds"><option value="">lbs</option></select>
-          <select name="weightOz" aria-label="Ounces"><option value="">oz</option></select>
-        </div>
-
-        <label class="q" for="g_len">Length (inches)</label>
-        <select id="g_len" name="length"><option value="">Choose</option></select>
-
-        <label class="q">Hair</label>
-        <div class="choice three">
-          <input type="radio" id="g_h1" name="hair" value="Bald"><label for="g_h1">Bald</label>
-          <input type="radio" id="g_h2" name="hair" value="A little fuzz"><label for="g_h2">A little</label>
-          <input type="radio" id="g_h3" name="hair" value="A full head"><label for="g_h3">A full head</label>
-        </div>
-
-        <label class="q">Eye color</label>
-        <div class="choice three">
-          <input type="radio" id="g_e1" name="eyes" value="Brown"><label for="g_e1">Brown</label>
-          <input type="radio" id="g_e2" name="eyes" value="Blue"><label for="g_e2">Blue</label>
-          <input type="radio" id="g_e3" name="eyes" value="Green / Hazel"><label for="g_e3">Green</label>
-        </div>
-
-        <label class="q">Baby will look more like</label>
-        <div class="choice two">
-          <input type="radio" id="g_l1" name="looksLike" value="Mom"><label for="g_l1">Mom</label>
-          <input type="radio" id="g_l2" name="looksLike" value="Dad"><label for="g_l2">Dad</label>
-        </div>
-
-        <label class="q" for="g_wish">Wishes or advice for the parents <span style="font-weight:400">(optional)</span></label>
-        <textarea id="g_wish" name="wish" maxlength="600"></textarea>
-
-        <button class="submit" type="submit">Submit my guesses</button>
-        <div class="err" id="guessErr" role="alert"></div>
-      </form>
-      <div class="thanks hidden" id="guessThanks">
-        <svg viewBox="0 0 200 230" aria-hidden="true"><use href="#bear"/></svg>
-        <div class="script">Guesses saved!</div>
-        <p>We'll find out who was closest after baby arrives.</p>
       </div>
       <button class="back" data-go="invite">Return to invitation</button>
     </div>
@@ -472,7 +440,7 @@ const CONFIG = {
 };
 
 /* ---------- screens ---------- */
-const screens = ['landing','invite','rsvp','guess'];
+const screens = ['landing','invite','rsvp'];
 function go(id, push = true){
   screens.forEach(s => document.getElementById(s).classList.toggle('on', s === id));
   window.scrollTo(0,0);
@@ -492,7 +460,7 @@ function openEnv(){
 env.addEventListener('click', openEnv);
 env.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnv(); } });
 document.getElementById('tapBtn').addEventListener('click', openEnv);
-if (['invite','rsvp','guess'].includes(location.hash.slice(1))) go(location.hash.slice(1), false);
+if (['invite','rsvp'].includes(location.hash.slice(1))) go(location.hash.slice(1), false);
 
 /* ---------- details ---------- */
 document.getElementById('addr').innerHTML = CONFIG.ADDRESS_LINES.map(l => l.replace(/[<>&]/g,'')).join('<br>');
@@ -508,9 +476,9 @@ const z = d => d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
 const where = CONFIG.MAP_QUERY || CONFIG.ADDRESS_LINES.join(', ');
 const title = "Brianna's Baby Shower";
 document.getElementById('gcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(title) +
-  '&dates=' + z(start) + '/' + z(end) + '&location=' + encodeURIComponent(where) + '&details=' + encodeURIComponent('Bring a pack of diapers for the diaper raffle!');
+  '&dates=' + z(start) + '/' + z(end) + '&location=' + encodeURIComponent(where) + '&details=' + encodeURIComponent('Bring a pack of diapers or wipes for the diaper raffle!');
 const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Judin//Baby Shower//EN','BEGIN:VEVENT','UID:brianna-baby-shower-20270123','DTSTAMP:' + z(new Date()),
-  'DTSTART:' + z(start),'DTEND:' + z(end),'SUMMARY:' + title,'LOCATION:' + where.replace(/,/g,'\\,'),'DESCRIPTION:Bring a pack of diapers for the diaper raffle!','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  'DTSTART:' + z(start),'DTEND:' + z(end),'SUMMARY:' + title,'LOCATION:' + where.replace(/,/g,'\\,'),'DESCRIPTION:Bring a pack of diapers or wipes for the diaper raffle!','END:VEVENT','END:VCALENDAR'].join('\r\n');
 document.getElementById('ics').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
 
 /* ---------- countdown ---------- */
@@ -523,12 +491,6 @@ function tick(){
   document.getElementById('cdM').textContent = Math.floor(ms / 6e4);
 }
 tick(); setInterval(tick, 30000);
-
-/* ---------- prediction selects ---------- */
-const lb = document.querySelector('[name=weightLb]'), oz = document.querySelector('[name=weightOz]'), len = document.getElementById('g_len');
-for (let i = 4; i <= 11; i++) lb.add(new Option(i + ' lbs', i));
-for (let i = 0; i <= 15; i++) oz.add(new Option(i + ' oz', i));
-for (let i = 16; i <= 24; i += .5) len.add(new Option(i + '"', i));
 
 /* ---------- submit ---------- */
 if (!CONFIG.SCRIPT_URL) document.getElementById('demoBadge').classList.remove('hidden');
@@ -563,32 +525,12 @@ rsvpForm.addEventListener('submit', async e => {
     document.getElementById('rsvpThanks').classList.remove('hidden');
     document.getElementById('rsvpThanksTitle').textContent = d.attending === 'Yes' ? 'See you there!' : "We'll miss you!";
     document.getElementById('rsvpThanksMsg').textContent = d.attending === 'Yes'
-      ? "Your RSVP is in. Don't forget a pack of diapers for the raffle!"
-      : 'Thank you for letting us know. You can still play Baby Predictions!';
+      ? "Your RSVP is in. Don't forget a pack of diapers or wipes for the raffle!"
+      : 'Thank you for letting us know. Brianna will miss you!';
   } catch (x) {
     err.textContent = 'That didn\'t go through. Please try again in a moment.';
   }
   btn.disabled = false; btn.textContent = 'Send RSVP';
-});
-
-const guessForm = document.getElementById('guessForm');
-guessForm.addEventListener('submit', async e => {
-  e.preventDefault();
-  const d = data(guessForm), err = document.getElementById('guessErr');
-  if (d.website) return;
-  if (!d.name) { err.textContent = 'Please add your name.'; return; }
-  if (!d.birthDate && !d.weightLb && !d.length) { err.textContent = 'Make at least one guess!'; return; }
-  err.textContent = '';
-  const btn = guessForm.querySelector('.submit'); btn.disabled = true; btn.textContent = 'Saving...';
-  try {
-    await send({ type:'guess', ...d });
-    store('guess', '1');
-    guessForm.classList.add('hidden');
-    document.getElementById('guessThanks').classList.remove('hidden');
-  } catch (x) {
-    err.textContent = 'That didn\'t go through. Please try again in a moment.';
-  }
-  btn.disabled = false; btn.textContent = 'Submit my guesses';
 });
 </script>
 </body>
